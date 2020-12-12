@@ -20,13 +20,15 @@ fs.readdir("./commands/", (err, files) => {
     jsfile.forEach((f, i) => {
         let pull = require(`./commands/${f}`);
         bot.commands.set(pull.config.name, pull);  
+        console.log("command " + botsettings.prefix + pull.config.name + " loaded")
         pull.config.aliases.forEach(alias => {
             bot.aliases.set(alias, pull.config.name)
+            console.log(`new alias loaded for ${botsettings.prefix + pull.config.name} (${botsettings.prefix + alias})`)
         });
     });
 });
 
-// register events (possible)
+// register events
 fs.readdir("./events/", (err, files) => {
 
     if(err) console.log(err)
@@ -37,7 +39,7 @@ fs.readdir("./events/", (err, files) => {
     }
     jsfile.forEach((f, i) => {
        require(`./events/${f}`);
-       console.log(`Loading ${f}`)
+       console.log(`Event ${f} loaded`)
     });
 });
 
