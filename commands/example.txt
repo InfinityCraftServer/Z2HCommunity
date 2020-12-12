@@ -1,4 +1,3 @@
-  
 const Discord = require("discord.js")
 const botconfig = require("../config.json");
 
@@ -9,5 +8,6 @@ module.exports.run = async (bot, message, args) => {
 module.exports.config = {
     name: "command",
     description: "beschrijving",
-    aliases: ['alias 1', 'alias 2']
+    aliases: ['alias 1', 'alias 2'],
+    permission: ("ADMINISTRATOR", "DEVELOPER", "PLAYER")
 }
